@@ -11,13 +11,13 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& src);
 		Bureaucrat& operator= (const Bureaucrat& rhs);
 		~Bureaucrat();
-		
 		std::string getName() const;
 		void setGrade(int grade);
 		int getGrade() const;
 
 		void incrementGrade();
 		void decrementGrade();
+		//void signForm(const Form &formToSign);
 
 		class GradeTooHighException : public std::exception
 		{
