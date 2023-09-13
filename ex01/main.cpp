@@ -1,136 +1,61 @@
 #include "Bureaucrat.hpp"
-
-
-class Form
-{
-
-	private :
-		const std::string	_name;
-		bool 				_isSigned;
-		const int			_gradeToSign;
-		const int			_gradeToExecute;
-
-	public :
-		Form();
-		Form(std::string name, int gradeToSign, int gradeToExecute);
-		Form(const Form &src);
-		Form& operator=(const Form &rhs);
-		~Form();
-
-		std::string getName() const;
-		int getGradeToSign() const;
-		int getGradeToExecute() const;
-		bool getIsSigned() const;
-
-		void beSigned(Bureaucrat &bureaucratForSign);
-
-		class GradeTooHighException : public std::exception
-		{
-			virtual const char* what() const throw()
-			{
-				return "Grade too High !!!";
-			}
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			virtual const char* what() const throw()
-			{
-				return "Grade too Low !!!";
-			}
-		};
-};
-
-void Form::beSigned(Bureaucrat &bureaucratForSign)
-{
-	if (bureaucratForSign.getGrade() <= this->_gradeToSign)
-	{
-		this->_isSigned = 1;
-	}
-}
-
-Form::Form() : _name("Default Form"), _isSigned(0), _gradeToSign(1), _gradeToExecute(1)
-{
-};
-
-Form::~Form()
-{
-};
-
-Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
-{
-	this->_isSigned = 0;
-	if (gradeToExecute > 150)
-		throw GradeTooLowException();
-	if (gradeToExecute < 1)
-		throw GradeTooHighException();
-	if (gradeToSign > 150)
-		throw GradeTooLowException();
-	if (gradeToSign < 1)
-		throw GradeTooHighException();
-};
-
-std::string Form::getName() const
-{
-	return this->_name;
-};
-
-int Form::getGradeToSign() const
-{
-	return this->_gradeToSign;
-};
-
-int Form::getGradeToExecute() const
-{
-	return this->_gradeToExecute;
-};
-
-bool Form::getIsSigned() const
-{
-	return this->_isSigned;
-};
-
-Form& Form::operator=(const Form &rhs)
-{
-	if (this != &rhs)
-	{
-		this->_isSigned = rhs._isSigned;
-	}
-	return *this;
-};
-
-
-
-
-// std::ostream& operator<<(std::ostream &out, Form &formToDisplay)
-// {
-
-// 	out << "" << std::endl;
-// 	return out;
-
-// }
-//Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
-
+#include "Form.hpp"
 
 int main()
 {
-
-	std::cout << "--------- Modèle coplien --------" << std::endl;
-	Form Form1;
-	Form Form2("Law for water quality protection.", 10, 9);
-
+	std::cout << "--------- Test 0 --------" << std::endl;
 	try
 	{
-		Form Form3("Law for keeping alive the hope.", 59, -98);
+		Form	buildAuth("Area Build Authorization", -1500, -1000);
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+	try
+	{
+		Form	buildAuth("Area Build Authorization", 1500, 5000);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
 
-	Bureaucrat viola("Viola", 1);
 
-	//Form2.beSigned(&viola);
+	std::cout << "--------- Test 1 --------" << std::endl;
+	try
+	{
+		Bureaucrat	amherd("Amherd", 50);
+		Form		water("Water Quality Preservation", 50, 25);
+		std::cout << amherd << std::endl;
+		std::cout << std::endl;
+		std::cout << water << std::endl;
+		std::cout << std::endl;
+		amherd.signForm(water);
+		std::cout << std::endl;
+		std::cout << water << std::endl;
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
+	std::cout << std::endl;
+	std::cout << "--------- Test 2 --------" << std::endl;
+
+	Bureaucrat	keller("Keller", 65);
+	Form		autoDrive("Authorising Autonomous Driving", 10, 1);
+	std::cout << keller << std::endl;
+	std::cout << std::endl;
+	std::cout << autoDrive << std::endl;
+	std::cout << std::endl;
+	keller.signForm(autoDrive);
+	std::cout << std::endl;
+	std::cout << autoDrive << std::endl;
+
 	
 
 
