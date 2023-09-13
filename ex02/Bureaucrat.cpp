@@ -59,7 +59,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
 {
 	if (this != &rhs)
 	{
-		std::cout << "Bureaucrat assignment operator called" << std::endl;
+		//std::cout << "Bureaucrat assignment operator called" << std::endl;
 		this->_grade = rhs._grade;
 	}
 	return *this;
@@ -70,7 +70,7 @@ int Bureaucrat::getGrade() const
 	return this->_grade;
 }
 
-void	Bureaucrat::signForm(Form &formToSign)
+void	Bureaucrat::signForm(AForm &formToSign)
 {
 	try
 	{
@@ -81,9 +81,20 @@ void	Bureaucrat::signForm(Form &formToSign)
 	{
 		std::cout << this->getName() << " couldn't sign " << formToSign.getName() << " because " << e.what() << std::endl;
 	}
-	
-
 }
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.execute(*this) == 1)
+	{
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	else
+	{
+		std::cout << this->getName() << " failed to execute " << form.getName() << std::endl;
+	}
+}
+
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat &BureaucratToDisplay)
 {

@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-void Form::beSigned(Bureaucrat &bureaucratForSign)
+void AForm::beSigned(Bureaucrat &bureaucratForSign)
 {
 	if (bureaucratForSign.getGrade() <= this->_gradeToSign)
 	{
@@ -12,15 +12,15 @@ void Form::beSigned(Bureaucrat &bureaucratForSign)
 	}
 }
 
-Form::Form() : _name("Default Form"), _isSigned(0), _gradeToSign(1), _gradeToExecute(1)
+AForm::AForm() : _name("Default AForm"), _isSigned(0), _gradeToSign(1), _gradeToExecute(1)
 {
 };
 
-Form::~Form()
+AForm::~AForm()
 {
 };
 
-Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	this->_isSigned = 0;
 	if (gradeToExecute > 150)
@@ -33,27 +33,27 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name),
 		throw GradeTooHighException();
 };
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return this->_name;
 };
 
-int Form::getGradeToSign() const
+int AForm::getGradeToSign() const
 {
 	return this->_gradeToSign;
 };
 
-int Form::getGradeToExecute() const
+int AForm::getGradeToExecute() const
 {
 	return this->_gradeToExecute;
 };
 
-bool Form::getIsSigned() const
+bool AForm::getIsSigned() const
 {
 	return this->_isSigned;
 };
 
-Form& Form::operator=(const Form &rhs)
+AForm& AForm::operator=(const AForm &rhs)
 {
 	if (this != &rhs)
 	{
@@ -62,7 +62,7 @@ Form& Form::operator=(const Form &rhs)
 	return *this;
 };
 
-std::ostream& operator<<(std::ostream &out, Form &formToDisplay)
+std::ostream& operator<<(std::ostream &out, AForm &formToDisplay)
 {
 	out << "            Name : " << formToDisplay.getName() << std::endl;
 	out << "       Is signed : " << formToDisplay.getIsSigned() << std::endl;
