@@ -3,6 +3,19 @@
 
 int main()
 {
+	std::cout << "--------- Tests d'instanciations --------" << std::endl;
+
+	Form	RandomLaw;
+
+	std::cout << RandomLaw << std::endl;
+
+	Form	SecondRandomLaw(RandomLaw);
+
+	std::cout << SecondRandomLaw << std::endl;
+
+	std::cout << std::endl;
+
+
 	std::cout << "--------- Test 0 --------" << std::endl;
 	try
 	{

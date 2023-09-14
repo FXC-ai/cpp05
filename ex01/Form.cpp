@@ -20,6 +20,12 @@ Form::~Form()
 {
 };
 
+Form::Form(const Form &src) : _name(src.getName()), _isSigned(src.getIsSigned()), _gradeToSign(src.getGradeToSign()), _gradeToExecute(src.getGradeToExecute())
+{
+
+};
+
+
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	this->_isSigned = 0;
