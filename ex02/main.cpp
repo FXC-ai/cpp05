@@ -1,28 +1,46 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
 
-	std::cout << "------------ TEST : = Modèle coplien de AForm ------------" << std::endl;
+	std::cout << "----------------- ShrubberyCreationForm -----------------" << std::endl;
 
+	Bureaucrat				alain("Alain", 1);
+	ShrubberyCreationForm	covidLaw("Covid law", "Fribourg");
+
+	alain.executeForm(covidLaw);
+	alain.signForm(covidLaw);
+	alain.signForm(covidLaw);
+	alain.executeForm(covidLaw);
 
 	std::cout << std::endl;
 
+	std::cout << "----------------- RobotomyRequestForm -----------------" << std::endl;
 
-	//AForm formTest;
+	Bureaucrat				sutter("Sutter", 4);
+	RobotomyRequestForm		robotomyForm("robotomyForm", "Renens");
 
-	Bureaucrat	rosti("Rosti", 14);
+	sutter.signForm(robotomyForm);
+	sutter.executeForm(robotomyForm);
 
-	rosti.incrementGrade();
+	std::cout << std::endl;
 
-	ShrubberyCreationForm  Testpoire("Poirier", "Lausanne");
+	std::cout << "----------------- RobotomyRequestForm -----------------" << std::endl;
 
-	rosti.signForm(Testpoire);
-	rosti.signForm(Testpoire);
+	Bureaucrat				beeblebrox("Zaphod Beeblebrox", 2);
 
-	rosti.executeForm(Testpoire);
+	PresidentialPardonForm begYourPardon("BegYourPardon", "Arthur Dent");
+
+	beeblebrox.executeForm(begYourPardon);
+	beeblebrox.signForm(begYourPardon);
+
+	beeblebrox.executeForm(begYourPardon);
+
+
 
 	return 0;
 }
