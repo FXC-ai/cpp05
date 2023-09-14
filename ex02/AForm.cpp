@@ -1,22 +1,6 @@
 #include "AForm.hpp"
 
-void AForm::beSigned(Bureaucrat &bureaucratForSign)
-{
-	if (bureaucratForSign.getGrade() <= this->_gradeToSign)
-	{
-		this->_isSigned = 1;
-	}
-	else
-	{
-		throw GradeTooLowException();
-	}
-}
-
 AForm::AForm() : _name("Default AForm"), _isSigned(0), _gradeToSign(1), _gradeToExecute(1)
-{
-};
-
-AForm::~AForm()
 {
 };
 
@@ -31,6 +15,23 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name
 		throw GradeTooLowException();
 	if (gradeToSign < 1)
 		throw GradeTooHighException();
+};
+
+AForm::AForm(const AForm &src) : _name(src.getName()), _isSigned(src.getIsSigned()), _gradeToSign(src.getGradeToSign()), _gradeToExecute(src.getGradeToExecute())
+{
+};
+
+AForm::~AForm()
+{
+};
+
+AForm& AForm::operator=(const AForm &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_isSigned = rhs._isSigned;
+	}
+	return *this;
 };
 
 std::string AForm::getName() const
@@ -53,14 +54,24 @@ bool AForm::getIsSigned() const
 	return this->_isSigned;
 };
 
-AForm& AForm::operator=(const AForm &rhs)
+void AForm::beSigned(Bureaucrat &bureaucratForSign)
 {
-	if (this != &rhs)
+	if (bureaucratForSign.getGrade() <= this->_gradeToSign)
 	{
-		this->_isSigned = rhs._isSigned;
+		if (this->_isSigned == 0)
+		{
+			this->_isSigned = 1;
+		}
+		else
+		{
+			throw FormAlreadySignedException();
+		}
 	}
-	return *this;
-};
+	else
+	{
+		throw GradeTooLowException();
+	}
+}
 
 std::ostream& operator<<(std::ostream &out, AForm &formToDisplay)
 {

@@ -22,15 +22,14 @@ class AForm
 		AForm();
 		AForm(std::string name, int gradeToSign, int gradeToExecute);
 		AForm(const AForm &src);
-		AForm& operator=(const AForm &rhs);
 		virtual ~AForm();
+
+		AForm& operator=(const AForm &rhs);
 
 		std::string getName() const;
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 		bool getIsSigned() const;
-		virtual bool execute(Bureaucrat const & executor) const = 0; 
-
 
 		void beSigned(Bureaucrat &bureaucratForSign);
 
@@ -49,6 +48,24 @@ class AForm
 				return "Grade too Low !!!";
 			}
 		};
+
+		class FormNotSignedException : public std::exception
+		{
+			virtual const char* what() const throw()
+			{
+				return "Form not signed !!!";
+			}
+		};
+
+		class FormAlreadySignedException : public std::exception
+		{
+			virtual const char* what() const throw()
+			{
+				return "Form already signed !!!";
+			}
+		};
+
+		virtual void execute(Bureaucrat const & executor) const = 0; 
 };
 
 std::ostream& operator<<(std::ostream &out, AForm &formToDisplay);

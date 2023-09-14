@@ -12,15 +12,21 @@ class AForm;
 
 class Bureaucrat
 {
+	private:	
+		const std::string	_name;
+		int					_grade;
+
 	public:
     	Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat& src);
-		Bureaucrat& operator= (const Bureaucrat& rhs);
 		~Bureaucrat();
+
+		Bureaucrat& operator= (const Bureaucrat& rhs);
+
 		std::string getName() const;
-		void setGrade(int grade);
 		int getGrade() const;
+		void setGrade(int grade);
 
 		void incrementGrade();
 		void decrementGrade();
@@ -42,11 +48,6 @@ class Bureaucrat
 				return "Grade too Low !!!";
 			}
 		};
-
-	private:	
-		const std::string	_name;
-		int					_grade;
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat &BureaucratToDisplay);
