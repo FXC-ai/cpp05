@@ -10,7 +10,7 @@ int main()
 	std::cout << "----------------- ShrubberyCreationForm -----------------" << std::endl;
 
 	Bureaucrat				alain("Alain", 1);
-	ShrubberyCreationForm	covidLaw("Covid law", "Fribourg");
+	ShrubberyCreationForm	covidLaw("Fribourg");
 
 	alain.executeForm(covidLaw);
 	alain.signForm(covidLaw);
@@ -22,7 +22,7 @@ int main()
 	std::cout << "----------------- RobotomyRequestForm -----------------" << std::endl;
 
 	Bureaucrat				sutter("Sutter", 4);
-	RobotomyRequestForm		robotomyForm("robotomyForm", "Renens");
+	RobotomyRequestForm		robotomyForm("Renens");
 
 	sutter.signForm(robotomyForm);
 	sutter.executeForm(robotomyForm);
@@ -33,7 +33,7 @@ int main()
 
 	Bureaucrat				beeblebrox("Zaphod Beeblebrox", 2);
 
-	PresidentialPardonForm begYourPardon("BegYourPardon", "Arthur Dent");
+	PresidentialPardonForm begYourPardon("Arthur Dent");
 
 	beeblebrox.executeForm(begYourPardon);
 	beeblebrox.signForm(begYourPardon);

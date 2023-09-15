@@ -69,8 +69,5 @@ int main()
 	std::cout << std::endl;
 	std::cout << autoDrive << std::endl;
 
-	
-
-
 	return 0;
 }

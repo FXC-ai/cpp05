@@ -23,13 +23,13 @@ AForm* Intern::makeForm(const std::string formName, const std::string target)
 	const std::string tab[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	int id_form;
 	int i;
-	AForm *tabForms[3];
+	AForm* tabForms[3];
 	
 	id_form = -1;
 	i = 0;
-	tabForms[0] = new ShrubberyCreationForm(formName, target); 
-	tabForms[1] = new RobotomyRequestForm(formName, target); 
-	tabForms[2] = new PresidentialPardonForm(formName, target); 
+	tabForms[0] = new ShrubberyCreationForm(target); 
+	tabForms[1] = new RobotomyRequestForm(target); 
+	tabForms[2] = new PresidentialPardonForm(target); 
 
 	while (i < 3)
 	{

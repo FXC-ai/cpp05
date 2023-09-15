@@ -21,17 +21,16 @@ void Bureaucrat::decrementGrade()
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	this->setGrade(grade);
-	//std::cout << "Bureaucrat " << this->_name << " " << this->_grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat() : _name("Default name"), _grade(150)
 {
-	//std::cout << "Bureaucrat constructor called" << std::endl;
+
 }
 
 Bureaucrat::~Bureaucrat() 
 {
-	//std::cout << "Bureaucrat default destructor called" << std::endl;
+
 }
 
 std::string Bureaucrat::getName() const
@@ -52,7 +51,7 @@ void Bureaucrat::setGrade(int grade)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src) : _name(src._name), _grade(src._grade)
 {
-	//std::cout << "Bureaucrat copy constructor called" << std::endl;
+
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
